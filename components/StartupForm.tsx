@@ -429,7 +429,7 @@ const StartupForm = () => {
   };
 
   // ✅ useActionState from react-dom
-  const [state, formAction, isPending] = useActionState(handleFormSubmit, {
+  const [_state, formAction, isPending] = useActionState(handleFormSubmit, {
     error: "",
     status: "INITIAL",
   });

@@ -1,10 +1,9 @@
-import React from "react";
+
 import SearchForm from "../../components/SearchForm";
 import { auth } from "@/auth";
 import { Startup } from "@/sanity.types";
 import { Author } from "@/sanity.types";
 import StartupCard from "@/components/StartupCard";
-import { client } from "@/sanity/lib/client";
 import { STARTUPS_QUERY } from "@/sanity/lib/queies";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 

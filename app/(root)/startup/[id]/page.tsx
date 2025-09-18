@@ -1,13 +1,12 @@
 import { formatDate } from "@/lib/utils";
 import { client } from "@/sanity/lib/client";
 import { STARTUPS_QUERY_BY_ID, PLAYLIST_BY_SLUG_QUERY } from "@/sanity/lib/queies";
-// import { Link } from "lucide-react";
+
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import React, { Suspense } from "react";
 import markdown from "markdown-it";
-import { SanityClient } from "sanity";
 import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
 import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
@@ -40,7 +39,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <p className="sub-heading !max-w-5xl">{post.description}</p>
       </section>
       <section className="section_container">
-        <img
+        <Image
           src={post.image}
           alt="{post.title}"
           className="w-full h-auto rounded-xl sha"
