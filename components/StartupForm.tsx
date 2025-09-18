@@ -12,13 +12,18 @@ import { useRouter } from "next/navigation";
 import { createPitch } from "@/lib/actions";
 import { formSchema } from "@/lib/validation";
 
+type FormState = {
+  error: string;
+  status: "INITIAL" | "SUCCESS" | "ERROR";
+};
+
 const StartupForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [pitch, setPitch] = useState("");
   const router = useRouter();
 
   // ✅ wrap your server action with client-side validation
-  const handleFormSubmit = async (prevState: any, formData: FormData) => {
+  const handleFormSubmit = async (prevState: FormState, formData: FormData) => {
     try {
       const formValues = {
         title: formData.get("title") as string,
