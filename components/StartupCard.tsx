@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { Author, Startup } from "@/sanity.types";
 import { Skeleton } from "./ui/skeleton";
+import Image from "next/image";
 
 export type StartupTypeCard = Omit<Startup, "author"> & {author?: Author};
 
@@ -30,16 +31,16 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
                 </Link>
             </div>
             <Link href={`/user/${post.author?._id}`} className="size-8">
-                <img
-                    src={post?.author?.image}
-                    alt={post.title}
+                <Image
+                    src={post?.author?.image ?? "/default-avatar.png"}
+                    alt={post.title ?? "Startup image"}
                     className="w-full h-full object-cover rounded-full size-12"
                 />
             </Link>
         </div>
         <Link href={`/startup/${post._id}`} className="text-primary">
             <p className="startup-card_desc ">{post.description}</p>
-            <img src={post.image} alt={post.title} className="startup-card_img"/>
+            <Image src={post.image ?? "/default-image.png"} alt={post.title ?? "Startup image"} className="startup-card_img"/>
         </Link>
         <div className="flex-between gap-3 mt-5">
             <Link href={`/?query=${post.category}`} className="text-primary">
@@ -55,13 +56,15 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
   );
 };
 
-export const StartupCardSkeleton = () => {
-    <>
+export const StartupCardSkeleton = () => (
+  <>
     {[0,1,2,3,4].map((i) => (
-        <li key={cn("skeleton", i )}>
-           <Skeleton className="startup-card_skeleton"></Skeleton>
-         </li> ))}
-    </>
-}
+      <li key={cn("skeleton", i)}>
+        <Skeleton className="startup-card_skeleton" />
+      </li>
+    ))}
+  </>
+);
+
 
 export default StartupCard;
