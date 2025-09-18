@@ -41,8 +41,10 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
       <section className="section_container">
         <Image
           src={post.image}
-          alt="{post.title}"
-          className="w-full h-auto rounded-xl sha"
+          alt={post.title}
+          height={400}
+          width={400}
+          className="w-full h-auto rounded-xl"
         />
         <div className="space-y-5 mt-10 max-w-4xl mx-auto">
           <div className="flex-between gap-5">

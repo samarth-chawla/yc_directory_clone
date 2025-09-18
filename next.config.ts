@@ -23,6 +23,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**", // allow all paths for GitHub avatars
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com", // ✅ allow Unsplash
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };

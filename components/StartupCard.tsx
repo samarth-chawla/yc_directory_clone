@@ -34,13 +34,15 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
                 <Image
                     src={post?.author?.image ?? "/default-avatar.png"}
                     alt={post.title ?? "Startup image"}
+                    width={48}
+                    height={48}
                     className="w-full h-full object-cover rounded-full size-12"
                 />
             </Link>
         </div>
         <Link href={`/startup/${post._id}`} className="text-primary">
             <p className="startup-card_desc ">{post.description}</p>
-            <Image src={post.image ?? "/default-image.png"} alt={post.title ?? "Startup image"} className="startup-card_img"/>
+            <Image src={post.image ?? "/default-image.png"} alt={post.title ?? "Startup image"} height={164} width={164} className="startup-card_img"/>
         </Link>
         <div className="flex-between gap-3 mt-5">
             <Link href={`/?query=${post.category}`} className="text-primary">
